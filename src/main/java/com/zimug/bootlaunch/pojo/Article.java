@@ -11,13 +11,14 @@ import java.util.List;
 
 /**
  * 文章
+ *
  * @author shiga
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder(value={"content","title"})
+@JsonPropertyOrder(value = {"content", "title"})
 public class Article {
 
     @JsonIgnore

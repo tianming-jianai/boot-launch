@@ -15,7 +15,7 @@ import java.time.temporal.ChronoField;
 public class HelloController {
     @RequestMapping("/hello")
     public Article hello(String name) {
-        Article article = new Article(1L,"zsg","标题","内容", LocalDateTime.now(),null);
+        Article article = new Article(1L, "zsg", "标题", "内容", LocalDateTime.now(), null);
 
         log.info(article.toString());
 

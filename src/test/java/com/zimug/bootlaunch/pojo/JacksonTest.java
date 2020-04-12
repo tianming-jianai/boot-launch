@@ -23,7 +23,7 @@ public class JacksonTest {
         // 从字节流中读取
 //        newFriend = mapper.readValue(bytes, Friend.class);
         // 从文件中读取
-        Friend newFriend =  mapper.readValue(new File("friend.json"), Friend.class);
+        Friend newFriend = mapper.readValue(new File("friend.json"), Friend.class);
         System.out.println(newFriend);
     }
 }

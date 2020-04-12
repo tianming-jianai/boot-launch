@@ -66,7 +66,7 @@ public class ArticleRestControllerTest3 {
 
         MvcResult result = mockMvc.perform(
                 MockMvcRequestBuilders.request(HttpMethod.POST, "/rest/article")
-                .contentType("application/json;charset=utf-8").content(article))
+                        .contentType("application/json;charset=utf-8").content(article))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.auther").value("zimug"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.reader[0].age").value(18))

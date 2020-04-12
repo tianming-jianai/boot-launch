@@ -1,0 +1,19 @@
+# 规则一：双引号不转义，单引号转义 " zhangsan 换行 lisi
+# 规则二：支持松散结构 family-name = familyName = family_name
+family:
+  family-name: 'happy family'
+  father:
+    name: zimug
+    age: 18
+  mother:
+    alias:
+      - lovely
+      - alice
+  child:
+    name: kobe
+    age: 5
+    friends:
+      - hobby: football
+        sex: male
+      - hobby: basketball
+        sex: female

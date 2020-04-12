@@ -25,6 +25,7 @@ public class AjaxResponse {
 
     /**
      * 请求成功的响应，不带查询数据（用于删除、修改、新增接口）
+     *
      * @return AjaxResponse
      */
     public static AjaxResponse success() {
@@ -36,7 +37,7 @@ public class AjaxResponse {
     }
 
     /**
-     *  请求成功的响应，带有查询数据（用于数据查询接口）
+     * 请求成功的响应，带有查询数据（用于数据查询接口）
      */
     public static AjaxResponse success(Object data) {
         AjaxResponse resultBean = new AjaxResponse();

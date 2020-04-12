@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonPropertyOrder(value={"name","age"})
+@JsonPropertyOrder(value = {"name", "age"})
 public class Friend {
     @JsonProperty("name")
     private String nickname;

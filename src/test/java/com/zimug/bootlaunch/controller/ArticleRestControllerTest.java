@@ -26,7 +26,7 @@ public class ArticleRestControllerTest {
         //tandaloneSetup(Object... controllers): 通过参数指定一组控制器，这样就不需要从上下文获取了。
         mockMvc = MockMvcBuilders.standaloneSetup(new ArticleRestController()).build();
 //        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        log.info("AAAAAAAAAAAA----------{}",mockMvc);
+        log.info("AAAAAAAAAAAA----------{}", mockMvc);
     }
 
     //测试方法
