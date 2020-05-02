@@ -26,8 +26,8 @@ public class ArticleRestJDBCServiceImpl implements ArticleRestJDBCService {
     @Override
     public Article saveArticle(Article article) {
         articleJDBCDao.save(article,primaryJdbcTemplate);
-//        var i=1/0;
         articleJDBCDao.save(article,secondaryJdbcTemplate);
+//        var i=1/0;
         return article;
     }
 
