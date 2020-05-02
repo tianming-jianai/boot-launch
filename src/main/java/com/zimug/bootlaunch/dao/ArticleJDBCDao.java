@@ -17,14 +17,17 @@ import java.util.List;
 public class ArticleJDBCDao {
 
     @Resource
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate primaryJdbcTemplate;
 
     /**
      * 保存文章
      *
      * @param article 文章
      */
-    public void save(Article article) {
+    public void save(Article article, JdbcTemplate jdbcTemplate) {
+        if(jdbcTemplate==null){
+            jdbcTemplate=primaryJdbcTemplate;
+        }
         //jdbcTemplate适合insert update delete
         jdbcTemplate.update("insert into article(author, title, content, createTime) values(?,?,?,?)",
                 article.getAuthor(),
@@ -34,7 +37,10 @@ public class ArticleJDBCDao {
 
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id, JdbcTemplate jdbcTemplate) {
+        if(jdbcTemplate==null){
+            jdbcTemplate=primaryJdbcTemplate;
+        }
         int update = jdbcTemplate.update("delete from article where id=?", new Object[]{id});
         log.info("删除文章：" + update);
     }
@@ -44,7 +50,10 @@ public class ArticleJDBCDao {
      *
      * @param article 文章
      */
-    public void updateById(Article article) {
+    public void updateById(Article article, JdbcTemplate jdbcTemplate) {
+        if(jdbcTemplate==null){
+            jdbcTemplate=primaryJdbcTemplate;
+        }
         jdbcTemplate.update("update article set author=?,title=?,content=?,createTime=? where id=?",
                 article.getAuthor(),
                 article.getTitle(),
@@ -60,14 +69,20 @@ public class ArticleJDBCDao {
      * @param id
      * @return
      */
-    public Article findById(Long id) {
+    public Article findById(Long id, JdbcTemplate jdbcTemplate) {
+        if(jdbcTemplate==null){
+            jdbcTemplate=primaryJdbcTemplate;
+        }
         return (Article) jdbcTemplate.queryForObject("select * from article where id=?",
                 new Object[]{id},
                 new BeanPropertyRowMapper<>(Article.class));
 
     }
 
-    public List<Article> findAll() {
+    public List<Article> findAll(JdbcTemplate jdbcTemplate) {
+        if(jdbcTemplate==null){
+            jdbcTemplate=primaryJdbcTemplate;
+        }
         //query用于查找结果列表
         return (List<Article>) jdbcTemplate.query("select * from article",
                 new BeanPropertyRowMapper<>(Article.class));
