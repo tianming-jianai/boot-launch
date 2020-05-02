@@ -1,7 +1,7 @@
 # 规则一：双引号不转义，单引号转义 " zhangsan 换行 lisi
 # 规则二：支持松散结构 family-name = familyName = family_name
 family:
-  family-name: 'happy family'
+  family-name: ENC(9/5/pHiZWpj0eclmUsWPIUNdR7PKCm+W)
   father:
     name: zimug
     age: 18

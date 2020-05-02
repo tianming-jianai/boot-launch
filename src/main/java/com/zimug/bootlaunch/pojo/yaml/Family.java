@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 @PropertySource(value = {"classpath:family.yml"}, factory = MixPropertySourceFactory.class)
 public class Family {
     //    @Value("${family.family-name}")
+
     @NotNull(message = "家庭名称不可为空")
     private String familyName;
     private Father father;

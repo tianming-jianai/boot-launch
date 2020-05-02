@@ -30,7 +30,7 @@ public class ArticleRestControllerTest {
     }
 
     //测试方法
-    @Test
+    /*@Test
     public void saveArticle() throws Exception {
 
 //        System.out.println(mockMvc);
@@ -54,5 +54,5 @@ public class ArticleRestControllerTest {
 
         log.info(result.getResponse().getContentAsString());
 
-    }
+    }*/
 }

@@ -1,7 +1,11 @@
+#配置文件优先级：外部大于内部，特指大于泛指    resources目录是classpath
+#需要使用的配置文件
 spring:
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
+  profiles:
+    active: test
 
-server:
-  port: 8888   # web应用服务端口
+
+#jasypt:
+#  encryptor:
+#    password: 123456
+# 需要解密的地方，使用ENC()进行包裹处理
