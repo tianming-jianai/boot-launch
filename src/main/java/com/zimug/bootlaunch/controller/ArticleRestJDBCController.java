@@ -1,24 +1,22 @@
 package com.zimug.bootlaunch.controller;
 
 import com.zimug.bootlaunch.pojo.Article;
-import com.zimug.bootlaunch.service.ArticleRestService;
+import com.zimug.bootlaunch.service.ArticleRestJDBCService;
 import com.zimug.bootlaunch.utils.AjaxResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
-/**
- * @author shiga
- */
 @Slf4j
 @RestController
-@RequestMapping("/rest")
-public class ArticleRestController {
+@RequestMapping("/rest2")
+public class ArticleRestJDBCController {
 
     @Resource
-    ArticleRestService articleRestService;
+    ArticleRestJDBCService articleRestJDBCService;
 
     /**
      * 增加一篇Article ，使用POST方法
@@ -30,7 +28,7 @@ public class ArticleRestController {
     public AjaxResponse saveArticle(@RequestBody Article article) {
         //因为使用了lombok的Slf4j注解，这里可以直接使用log变量打印日志
         log.info("saveArticle：{}", article);
-        articleRestService.saveArticle(article);
+        articleRestJDBCService.saveArticle(article);
         return AjaxResponse.success(article);
     }
 
@@ -43,6 +41,7 @@ public class ArticleRestController {
     @RequestMapping(value = "/article/{id}", method = RequestMethod.DELETE, produces = "application/json")
     public AjaxResponse deleteArticle(@PathVariable Long id) {
         log.info("deleteArticle：{}", id);
+        articleRestJDBCService.deleteArticle(id);
         return AjaxResponse.success(id);
     }
 
@@ -57,6 +56,7 @@ public class ArticleRestController {
     public AjaxResponse updateArticle(@PathVariable Long id, @RequestBody Article article) {
         article.setId(id);
         log.info("updateArticle：{}", article);
+        articleRestJDBCService.updateArticle(article);
         return AjaxResponse.success(article);
     }
 
@@ -76,6 +76,13 @@ public class ArticleRestController {
                 .content("spring boot 2.深入浅出")
                 .createTime(LocalDateTime.now())
                 .title("t1").build();
+        article1 = articleRestJDBCService.getArticle(id);
         return AjaxResponse.success(article1);
+    }
+
+    @GetMapping("/article")
+    public @ResponseBody AjaxResponse getAllArticle(){
+        List<Article> all = articleRestJDBCService.getA11();
+        return AjaxResponse.success(all);
     }
 }

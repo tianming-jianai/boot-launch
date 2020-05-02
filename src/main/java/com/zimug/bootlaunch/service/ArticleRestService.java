@@ -1,4 +1,4 @@
-package com.zimug.bootlaunch.server;
+package com.zimug.bootlaunch.service;
 
 import com.zimug.bootlaunch.pojo.Article;
 import lombok.extern.slf4j.Slf4j;
