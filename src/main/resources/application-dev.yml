@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT-8
+  datasource:
+    url: jdbc:mysql://localhost:3306/supermall?useUnicode=true&charcterEncoding=utf-8&useSSL=false
+    username: root
+    password: m123
+    driver-class-name: com.mysql.cj.jdbc.Driver

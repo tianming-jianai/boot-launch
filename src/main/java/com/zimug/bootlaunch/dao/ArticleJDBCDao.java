@@ -26,7 +26,7 @@ public class ArticleJDBCDao {
      */
     public void save(Article article) {
         //jdbcTemplate适合insert update delete
-        jdbcTemplate.update("insert into article(author, title, content, create_time) values(?,?,?,?)",
+        jdbcTemplate.update("insert into article(author, title, content, createTime) values(?,?,?,?)",
                 article.getAuthor(),
                 article.getTitle(),
                 article.getContent(),
@@ -45,7 +45,7 @@ public class ArticleJDBCDao {
      * @param article 文章
      */
     public void updateById(Article article) {
-        jdbcTemplate.update("update article set author=?,title=?,content=?,create_time=? where id=?",
+        jdbcTemplate.update("update article set author=?,title=?,content=?,createTime=? where id=?",
                 article.getAuthor(),
                 article.getTitle(),
                 article.getContent(),
