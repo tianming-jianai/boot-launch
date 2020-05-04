@@ -1,8 +1,10 @@
 package com.zimug.bootlaunch.service;
 
 import com.github.dozermapper.core.Mapper;
-import com.zimug.bootlaunch.generator.Article;
-import com.zimug.bootlaunch.generator.ArticleMapper;
+import com.zimug.bootlaunch.generator.testdb.Article;
+import com.zimug.bootlaunch.generator.testdb.ArticleMapper;
+import com.zimug.bootlaunch.generator.testdb2.Message;
+import com.zimug.bootlaunch.generator.testdb2.MessageMapper;
 import com.zimug.bootlaunch.pojo.ArticleVO;
 import com.zimug.bootlaunch.utils.DozerUtils;
 import org.springframework.stereotype.Service;
@@ -26,11 +28,18 @@ public class ArticleMyBatisRestServiceImpl implements ArticleMyBatisRestService 
     @Resource
     private ArticleMapper articleMapper;
 
+    @Resource
+    private MessageMapper messageMapper;
+
 
     @Override
     public ArticleVO saveArticle(ArticleVO article) {
         Article articlePO = dozerMapper.map(article,Article.class);
         articleMapper.insert(articlePO);
+        Message message = new Message();
+        message.setName("curry");
+        message.setContent("萌神");
+        messageMapper.insert(message);
         return null;
     }
 

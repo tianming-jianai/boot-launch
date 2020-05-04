@@ -1,4 +1,4 @@
-package com.zimug.bootlaunch.generator;
+package com.zimug.bootlaunch.generator.testdb;
 
 import org.apache.ibatis.annotations.Param;
 

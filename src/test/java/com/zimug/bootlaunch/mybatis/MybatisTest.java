@@ -2,8 +2,8 @@ package com.zimug.bootlaunch.mybatis;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.zimug.bootlaunch.generator.Article;
-import com.zimug.bootlaunch.generator.ArticleMapper;
+import com.zimug.bootlaunch.generator.testdb.Article;
+import com.zimug.bootlaunch.generator.testdb.ArticleMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

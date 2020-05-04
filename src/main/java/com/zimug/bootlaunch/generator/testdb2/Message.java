@@ -1,22 +1,17 @@
-package com.zimug.bootlaunch.generator;
+package com.zimug.bootlaunch.generator.testdb2;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
- * article
+ * message
  * @author 
  */
-public class Article implements Serializable {
+public class Message implements Serializable {
     private Long id;
-
-    private String author;
 
     private String content;
 
-    private LocalDateTime createTime;
-
-    private String title;
+    private String name;
 
     private static final long serialVersionUID = 1L;
 
@@ -28,14 +23,6 @@ public class Article implements Serializable {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getContent() {
         return content;
     }
@@ -44,20 +31,12 @@ public class Article implements Serializable {
         this.content = content;
     }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
+    public String getName() {
+        return name;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -71,12 +50,10 @@ public class Article implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Article other = (Article) that;
+        Message other = (Message) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getAuthor() == null ? other.getAuthor() == null : this.getAuthor().equals(other.getAuthor()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()));
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()));
     }
 
     @Override
@@ -84,10 +61,8 @@ public class Article implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getAuthor() == null) ? 0 : getAuthor().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
-        result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         return result;
     }
 
@@ -98,10 +73,8 @@ public class Article implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", author=").append(author);
         sb.append(", content=").append(content);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", title=").append(title);
+        sb.append(", name=").append(name);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

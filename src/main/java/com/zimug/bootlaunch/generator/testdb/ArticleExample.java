@@ -1,4 +1,4 @@
-package com.zimug.bootlaunch.generator;
+package com.zimug.bootlaunch.generator.testdb;
 
 import java.util.ArrayList;
 import java.util.Date;
