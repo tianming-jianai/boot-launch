@@ -14,12 +14,4 @@
             </converter>
         </custom-converters>
     </configuration>
-    <!--<mapping date-format="MM-dd-yyyy HH:mm:ss">
-        <class-a>com.zimug.bootlaunch.pojo.ArticleVO</class-a>
-        <class-b>com.zimug.bootlaunch.generator.Article</class-b>
-        <field>
-            <a>createTime</a>
-            <b>createtime</b>
-        </field>
-    </mapping>-->
 </mappings>

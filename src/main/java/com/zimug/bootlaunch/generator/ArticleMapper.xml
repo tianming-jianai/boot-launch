@@ -5,7 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -110,7 +110,7 @@
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zimug.bootlaunch.generator.Article" useGeneratedKeys="true">
     insert into article (author, content, createTime, 
       title)
-    values (#{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+    values (#{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zimug.bootlaunch.generator.Article" useGeneratedKeys="true">
@@ -122,7 +122,7 @@
       <if test="content != null">
         content,
       </if>
-      <if test="createtime != null">
+      <if test="createTime != null">
         createTime,
       </if>
       <if test="title != null">
@@ -136,8 +136,8 @@
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -162,8 +162,8 @@
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.createtime != null">
-        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -178,7 +178,7 @@
     set id = #{record.id,jdbcType=BIGINT},
       author = #{record.author,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
-      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
       title = #{record.title,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -193,8 +193,8 @@
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
@@ -206,7 +206,7 @@
     update article
     set author = #{author,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
       title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

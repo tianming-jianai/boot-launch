@@ -14,7 +14,7 @@ public class Article implements Serializable {
 
     private String content;
 
-    private LocalDateTime createtime;
+    private LocalDateTime createTime;
 
     private String title;
 
@@ -44,12 +44,12 @@ public class Article implements Serializable {
         this.content = content;
     }
 
-    public LocalDateTime getCreatetime() {
-        return createtime;
+    public LocalDateTime getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(LocalDateTime createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 
     public String getTitle() {
@@ -75,7 +75,7 @@ public class Article implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getAuthor() == null ? other.getAuthor() == null : this.getAuthor().equals(other.getAuthor()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
-            && (this.getCreatetime() == null ? other.getCreatetime() == null : this.getCreatetime().equals(other.getCreatetime()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()));
     }
 
@@ -86,7 +86,7 @@ public class Article implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getAuthor() == null) ? 0 : getAuthor().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
-        result = prime * result + ((getCreatetime() == null) ? 0 : getCreatetime().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
         return result;
     }
@@ -100,7 +100,7 @@ public class Article implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", author=").append(author);
         sb.append(", content=").append(content);
-        sb.append(", createtime=").append(createtime);
+        sb.append(", createTime=").append(createTime);
         sb.append(", title=").append(title);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
