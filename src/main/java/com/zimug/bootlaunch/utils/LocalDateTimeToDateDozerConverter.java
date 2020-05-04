@@ -1,6 +1,7 @@
 package com.zimug.bootlaunch.utils;
 
-import org.dozer.DozerConverter;
+
+import com.github.dozermapper.core.DozerConverter;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

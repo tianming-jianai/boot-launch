@@ -1,18 +1,20 @@
 package com.zimug.bootlaunch.service;
 
+import com.github.dozermapper.core.Mapper;
 import com.zimug.bootlaunch.dao.testdb.ArticleDO;
 import com.zimug.bootlaunch.dao.testdb.ArticleRepository;
+import com.zimug.bootlaunch.dao.testdb2.Message;
+import com.zimug.bootlaunch.dao.testdb2.MessageRepository;
 import com.zimug.bootlaunch.pojo.ArticleVO;
 import com.zimug.bootlaunch.utils.DozerUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.dozer.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,14 +33,25 @@ public class ArticleRestJPAServiceImpl implements  ArticleRestJPAService  {
     @Resource
     private Mapper dozerMapper;
 
+    @Resource
+    MessageRepository messageRepository;
+
+    @Transactional
     @Override
     public ArticleVO saveArticle( ArticleVO article) {
         log.info(article.toString());
         ArticleDO articleDO = dozerMapper.map(article,ArticleDO.class);
         //保存一个对象到数据库，insert
         log.info(articleDO.toString());
-        articleDO.setCreateTime(LocalDateTime.now());
+//        articleDO.setCreateTime(LocalDateTime.now());
         articleRepository.save(articleDO);
+
+
+        Message message = new Message();
+        message.setName("库里");
+        message.setContent("萌神");
+        messageRepository.save(message);
+//        int i= 1/0;
 
         return  article;
     }
