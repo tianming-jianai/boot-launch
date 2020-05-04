@@ -1,4 +1,4 @@
-package com.zimug.bootlaunch.dao;
+package com.zimug.bootlaunch.dao.testdb;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

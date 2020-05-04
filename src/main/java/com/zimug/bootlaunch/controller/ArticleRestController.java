@@ -1,5 +1,7 @@
 package com.zimug.bootlaunch.controller;
 
+import com.zimug.bootlaunch.dao.testdb2.Message;
+import com.zimug.bootlaunch.dao.testdb2.MessageRepository;
 import com.zimug.bootlaunch.pojo.ArticleVO;
 import com.zimug.bootlaunch.service.ArticleRestJPAService;
 import com.zimug.bootlaunch.utils.AjaxResponse;
@@ -21,6 +23,9 @@ public class ArticleRestController {
     @Resource
     ArticleRestJPAService articleRestJPAServiceImpl;
 
+    @Resource
+    MessageRepository messageRepository;
+
     /**
      * 增加一篇Article ，使用POST方法
      *
@@ -32,6 +37,11 @@ public class ArticleRestController {
         //因为使用了lombok的Slf4j注解，这里可以直接使用log变量打印日志
         log.info("saveArticle：{}", articleVO);
         articleRestJPAServiceImpl.saveArticle(articleVO);
+
+        Message message = new Message();
+        message.setName("Kobe");
+        message.setContent("科比被上帝叫走了");
+        messageRepository.save(message);
         return AjaxResponse.success(articleVO);
     }
 

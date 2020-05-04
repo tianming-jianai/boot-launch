@@ -1,7 +1,7 @@
 package com.zimug.bootlaunch.service;
 
-import com.zimug.bootlaunch.dao.ArticleDO;
-import com.zimug.bootlaunch.dao.ArticleRepository;
+import com.zimug.bootlaunch.dao.testdb.ArticleDO;
+import com.zimug.bootlaunch.dao.testdb.ArticleRepository;
 import com.zimug.bootlaunch.pojo.ArticleVO;
 import com.zimug.bootlaunch.utils.DozerUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,7 @@ public class ArticleRestJPAServiceImpl implements  ArticleRestJPAService  {
         ArticleDO articleDO = dozerMapper.map(article,ArticleDO.class);
         //保存一个对象到数据库，insert
         log.info(articleDO.toString());
+        articleDO.setCreateTime(LocalDateTime.now());
         articleRepository.save(articleDO);
 
         return  article;

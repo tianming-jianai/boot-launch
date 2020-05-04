@@ -1,7 +1,7 @@
 package com.zimug.bootlaunch.jpa;
 
-import com.zimug.bootlaunch.dao.ArticleDO;
-import com.zimug.bootlaunch.dao.ArticleRepository;
+import com.zimug.bootlaunch.dao.testdb.ArticleDO;
+import com.zimug.bootlaunch.dao.testdb.ArticleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
