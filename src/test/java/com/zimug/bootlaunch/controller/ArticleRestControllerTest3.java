@@ -3,14 +3,13 @@ package com.zimug.bootlaunch.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.zimug.bootlaunch.pojo.Article;
-import com.zimug.bootlaunch.server.ArticleRestService;
+import com.zimug.bootlaunch.pojo.ArticleVO;
+import com.zimug.bootlaunch.service.ArticleMyBatisRestService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -37,7 +36,7 @@ public class ArticleRestControllerTest3 {
     private MockMvc mockMvc;
 
     @MockBean
-    ArticleRestService articleRestService;
+    ArticleMyBatisRestService articleRestService;
 
 
     //测试方法
@@ -59,10 +58,10 @@ public class ArticleRestControllerTest3 {
         //序列化的时候序列对象的所有属性
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         mapper.registerModule(new JavaTimeModule());
-        Article articleObj = mapper.readValue(article, Article.class);
+        ArticleVO articleObj = mapper.readValue(article, ArticleVO.class);
 
         //打桩
-        when(articleRestService.saveArticle(articleObj)).thenReturn("ok");
+        when(articleRestService.saveArticle(articleObj)).thenReturn(articleObj);
 
         MvcResult result = mockMvc.perform(
                 MockMvcRequestBuilders.request(HttpMethod.POST, "/rest/article")

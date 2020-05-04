@@ -1,8 +1,8 @@
 package com.zimug.bootlaunch.utils;
 
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import com.google.common.collect.Lists;
-import org.dozer.DozerBeanMapperBuilder;
-import org.dozer.Mapper;
 
 import java.util.Collection;
 import java.util.Iterator;
