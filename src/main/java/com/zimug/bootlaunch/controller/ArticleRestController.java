@@ -1,13 +1,17 @@
 package com.zimug.bootlaunch.controller;
 
+import com.zimug.bootlaunch.dao.ArticleDao;
 import com.zimug.bootlaunch.pojo.Article;
 import com.zimug.bootlaunch.server.ArticleRestService;
 import com.zimug.bootlaunch.utils.AjaxResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author shiga
@@ -20,6 +24,12 @@ public class ArticleRestController {
     @Resource
     ArticleRestService articleRestService;
 
+    @Resource
+    ArticleDao mongoRepository;
+
+    @Resource
+    MongoTemplate mongoTemplate;
+
     /**
      * 增加一篇Article ，使用POST方法
      *
@@ -30,7 +40,7 @@ public class ArticleRestController {
     public AjaxResponse saveArticle(@RequestBody Article article) {
         //因为使用了lombok的Slf4j注解，这里可以直接使用log变量打印日志
         log.info("saveArticle：{}", article);
-        articleRestService.saveArticle(article);
+        mongoRepository.save(article);
         return AjaxResponse.success(article);
     }
 
@@ -41,8 +51,9 @@ public class ArticleRestController {
      * @return AjaxResponse
      */
     @RequestMapping(value = "/article/{id}", method = RequestMethod.DELETE, produces = "application/json")
-    public AjaxResponse deleteArticle(@PathVariable Long id) {
+    public AjaxResponse deleteArticle(@PathVariable String id) {
         log.info("deleteArticle：{}", id);
+        mongoRepository.deleteById(id);
         return AjaxResponse.success(id);
     }
 
@@ -54,9 +65,10 @@ public class ArticleRestController {
      * @return
      */
     @RequestMapping(value = "/article/{id}", method = RequestMethod.PUT, produces = "application/json")
-    public AjaxResponse updateArticle(@PathVariable Long id, @RequestBody Article article) {
+    public AjaxResponse updateArticle(@PathVariable String id, @RequestBody Article article) {
         article.setId(id);
         log.info("updateArticle：{}", article);
+        mongoRepository.save(article);
         return AjaxResponse.success(article);
     }
 
@@ -67,15 +79,20 @@ public class ArticleRestController {
      * @return
      */
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET, produces = "application/json")
-    public AjaxResponse getArticle(@PathVariable Long id) {
+    public AjaxResponse getArticle(@PathVariable String id) {
 
-        //使用lombok提供的builder构建对象
-        Article article1 = Article.builder()
-                .id(1L)
-                .author("zimug")
-                .content("spring boot 2.深入浅出")
-                .createTime(LocalDateTime.now())
-                .title("t1").build();
-        return AjaxResponse.success(article1);
+//        Optional<Article> article = mongoRepository.findById(id);
+//        Article article = mongoRepository.findByAuthor(id);
+
+        //查找 article根据Criteria 改造查询条件
+        Query query = new Query(Criteria.where("author").is("wishisnotfar"));
+        List<Article> article = mongoTemplate.find(query,Article.class);
+        return AjaxResponse.success(article.get(0));
+    }
+
+    @GetMapping(value = "/article")
+    public AjaxResponse getAll(){
+        List all = mongoRepository.findAll();
+        return AjaxResponse.success(all);
     }
 }
