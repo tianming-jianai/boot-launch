@@ -10,6 +10,7 @@ import com.zimug.bootlaunch.utils.DozerUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -32,14 +33,16 @@ public class ArticleMyBatisRestServiceImpl implements ArticleMyBatisRestService 
     private MessageMapper messageMapper;
 
 
+    @Transactional
     @Override
     public ArticleVO saveArticle(ArticleVO article) {
         Article articlePO = dozerMapper.map(article,Article.class);
         articleMapper.insert(articlePO);
         Message message = new Message();
-        message.setName("curry");
-        message.setContent("萌神");
+        message.setName("吉诺比利");
+        message.setContent("阿根廷-手抓蝙蝠，球风飘逸");
         messageMapper.insert(message);
+//        int a = 2/0;     //认为制造被除数为0的异常
         return null;
     }
 
