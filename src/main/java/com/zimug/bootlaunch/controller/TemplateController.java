@@ -38,4 +38,15 @@ public class TemplateController {
         //模版名称，实际的目录为：resources/templates/fremarkertemp.html
         return "freemarkertemp";
     }
+
+    @GetMapping("/thymeleaf")
+    public String index2(Model model) {
+
+        List<ArticleVO> articles = articleMyBatisRestService.getAll();
+
+        model.addAttribute("articles", articles);
+
+        //模版名称，实际的目录为：resources/templates/thymeleaftemp.html
+        return "thymeleaftemp";
+    }
 }
