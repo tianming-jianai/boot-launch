@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/template")
@@ -45,6 +47,12 @@ public class TemplateController {
         List<ArticleVO> articles = articleMyBatisRestService.getAll();
 
         model.addAttribute("articles", articles);
+
+        Map<String,Object> user = new HashMap<>();
+        user.put("id","1");
+        user.put("username",null);
+        user.put("password","m123");
+        model.addAttribute("user",user);
 
         //模版名称，实际的目录为：resources/templates/thymeleaftemp.html
         return "thymeleaftemp";
