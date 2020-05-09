@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class TemplateController {
     }
 
     @GetMapping("/thymeleaf")
-    public String index2(Model model) {
+    public String index2(Model model, HttpSession session) {
 
         List<ArticleVO> articles = articleMyBatisRestService.getAll();
 
@@ -53,6 +54,8 @@ public class TemplateController {
         user.put("username",null);
         user.put("password","m123");
         model.addAttribute("user",user);
+
+        session.setAttribute("foo","22222222");
 
         //模版名称，实际的目录为：resources/templates/thymeleaftemp.html
         return "thymeleaftemp";

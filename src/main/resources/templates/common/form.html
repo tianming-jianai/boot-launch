@@ -1,0 +1,9 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form th:fragment="userForm(user)" id="userForm">
+    <input type="text" id="id" th:value="${user.id}">
+    <input type="text" id="uesrname" name="username" th:value="${user.username}">
+    <input type="text" id="password" name="password" th:value="${user.password}">
+</form>
+
+</html>
